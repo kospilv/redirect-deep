@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 
         const main = document.querySelector('main');
         const linkEl = document.createElement('a');
-        const linkText = document.createTextNode("Deep link");
+        const linkText = document.createTextNode(redirectTo);
         
         linkEl.appendChild(linkText);
         main.appendChild(linkEl);
