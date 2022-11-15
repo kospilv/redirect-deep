@@ -8,6 +8,12 @@ window.addEventListener('load', () => {
     console.log('flowRunId', flowRunId);
 
     if (redirectTo) {
-        location.assign(redirectTo);
+        // location.assign(redirectTo);
+
+        const main = document.querySelector('main');
+        const linkEl = doceument.createElement('a');
+        
+        linkEl.attr('href', redirectTo);
+        main.appendChild(linkEl);
     }
 });
