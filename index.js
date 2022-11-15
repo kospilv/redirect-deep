@@ -16,6 +16,6 @@ window.addEventListener('load', () => {
         
         linkEl.appendChild(linkText);
         main.appendChild(linkEl);
-        linkEl.attr('href', redirectTo);
+        linkEl.setAttribute('href', redirectTo);
     }
 });
