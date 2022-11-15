@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
         // location.assign(redirectTo);
 
         const main = document.querySelector('main');
-        const linkEl = doceument.createElement('a');
+        const linkEl = document.createElement('a');
         const linkText = document.createTextNode("Deep link");
         
         linkEl.appendChild(linkText);
