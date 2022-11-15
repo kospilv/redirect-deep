@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kospilv/redirect-deep/issues"
   },
-  "homepage": "https://kospilv.github.io/redirect-deep"
+  "homepage": "https://kospilv.github.io/redirect-deep",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }
