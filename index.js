@@ -12,8 +12,10 @@ window.addEventListener('load', () => {
 
         const main = document.querySelector('main');
         const linkEl = doceument.createElement('a');
+        const linkText = document.createTextNode("Deep link");
         
-        linkEl.attr('href', redirectTo);
+        linkEl.appendChild(linkText);
         main.appendChild(linkEl);
+        linkEl.attr('href', redirectTo);
     }
 });
