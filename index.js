@@ -1,3 +1,6 @@
+window.addEventListener("DOMContentLoaded", (event) => {
+    changeBGColor();
+});
 window.addEventListener('load', () => {
     const { location } = window;
     const { search } = location;
@@ -19,3 +22,29 @@ window.addEventListener('load', () => {
         // linkEl.setAttribute('href', redirectTo);
     }
 });
+
+function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "unknown";
+}
+
+function getTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+    }
+}
+
+function changeBGColor() {
+    if (getTheme() !== 'dark') {
+        document.body.style.backgroundColor = 'white';
+    }
+}
