@@ -1,5 +1,7 @@
 window.addEventListener("DOMContentLoaded", (event) => {
     changeBGColor();
+
+    console.log('document.referrer', document.referrer);
 });
 window.addEventListener('load', () => {
     const { location } = window;
