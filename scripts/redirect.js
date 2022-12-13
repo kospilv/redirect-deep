@@ -4,7 +4,6 @@ export const REDIRECT_DELAY = 500;
 
 export const callApiMethod = (url, data) => {
     return fetch(url, {
-        credentials: 'include',
         method: 'post',
         body: JSON.stringify(data),
         mode: 'cors',
