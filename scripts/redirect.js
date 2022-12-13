@@ -7,6 +7,7 @@ export const callApiMethod = (url, data) => {
         credentials: 'include',
         method: 'post',
         body: JSON.stringify(data),
+        mode: 'cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
