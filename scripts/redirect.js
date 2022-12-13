@@ -30,9 +30,9 @@ export const main = async (env) => {
     const sendReaction = params.get('sendReaction');
 
     const data = {
-        transitionId: typeof transitionId !== 'undefined' ? Number(transitionId) : undefined,
-        flowRunId: typeof flowRunId !== 'undefined' ? Number(flowRunId) : undefined,
-        sendReaction: typeof flowRunId !== 'undefined' ? sendReaction === 'true' : undefined,
+        transitionId: transitionId != undefined ? Number(transitionId) : undefined,
+        flowRunId: flowRunId != undefined ? Number(flowRunId) : undefined,
+        sendReaction: flowRunId != undefined ? sendReaction === 'true' : undefined,
     };
 
     if (redirectTo) {
