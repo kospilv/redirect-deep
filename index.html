@@ -10,14 +10,14 @@
         <div class="loader"><div></div><div></div><div></div><div></div></div>
     </main>
     <script type="module">
-        import { changeBGColor } from './scripts/change-colors';
+        import { changeBGColor } from './scripts/change-colors.js';
 
         window.addEventListener('DOMContentLoaded', (event) => {
             changeBGColor();
         });
     </script>
     <script type="module">
-        import { main } from './scirpts/redirect';
+        import { main } from './scirpts/redirect.js';
 
         window.addEventListener('load', () => {
             main('prod');
