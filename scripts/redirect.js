@@ -1,6 +1,7 @@
-export const PROD_API_ENDPOINT_URL = 'https://webhook.site/5a17aea5-8ca3-433e-99f2-6a1e39fe5706';
-export const STAGING_API_ENDPOINT_URL = 'https://webhook.site/5a17aea5-8ca3-433e-99f2-6a1e39fe5706';
-export const REDIRECT_DELAY = 500;
+const PROD_API_ENDPOINT_URL = 'https://www.avito.ru/web/1/flower/flowButtonClick';
+const STAGING_API_ENDPOINT_URL = 'https://staging-www.k.avito.ru/web/1/flower/flowButtonClick';
+const WEBVIEW_REDIRECT_DELAY = 600;
+const DESKTOP_REDIRECT_DELAY = 300;
 
 export const callApiMethod = (url, data) => {
     return fetch(url, {
@@ -14,29 +15,29 @@ export const callApiMethod = (url, data) => {
     })
 };
 
-export const redirect = (redirectTo) => {
+export const redirect = (redirectTo, delay) => {
     const redirectHandler = () => window.location = redirectTo;
 
-    setTimeout(redirectHandler, REDIRECT_DELAY);
+    setTimeout(redirectHandler, delay ?? 0);
 };
 
 export const main = async (env) => {
     const { location } = window;
-    const { search } = location;
-    const params = new URLSearchParams(search);
-    const redirectTo = params.get('redirectTo');
-    const transitionId = params.get('transitionId');
-    const flowRunId = params.get('flowRunId');
-    const sendReaction = params.get('sendReaction');
+    const url = new URL(location.href);
+    const redirectUrl = url.searchParams.get('redirectUrl');
+    const transitionId = url.searchParams.get('transitionId');
+    const flowRunId = url.searchParams.get('flowRunId');
+    const sendReaction = url.searchParams.get('sendReaction');
+    const isWebview = /Android|iPhone/i.test(navigator.userAgent);
 
     const data = {
-        transitionId: transitionId != undefined ? Number(transitionId) : undefined,
-        flowRunId: flowRunId != undefined ? Number(flowRunId) : undefined,
-        sendReaction: flowRunId != undefined ? sendReaction === 'true' : undefined,
+        transitionId: transitionId != null ? Number(transitionId) : undefined,
+        flowRunId: flowRunId != null ? Number(flowRunId) : undefined,
+        sendReaction: sendReaction != null ? sendReaction === 'true' : undefined,
     };
 
-    if (redirectTo) {
-        redirect(redirectTo);
+    if (redirectUrl) {
+        redirect(redirectUrl, isWebview ? WEBVIEW_REDIRECT_DELAY : DESKTOP_REDIRECT_DELAY);
     }
 
     if (flowRunId) {
